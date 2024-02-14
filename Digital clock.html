@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock </title>
+  
+</head>
+<body>
+    <div id="digitalclock" class="Clockcss"></div>
+    <script type="text/javascript">
+
+        function showtime() {
+
+let date =new Date();
+let h = date.getHours();
+let m = date.getMinutes(); 
+let s = date.getSeconds();
+let session = "AM";
+
+if(h == 0)
+{
+    h = 12;
+}
+
+if (h > 12)  {
+    h = h - 12;
+    session = "PM";
+}
+
+//display the time in 12 hour format
+document.getElementById("digitalclock").innerHTML = h + ":" + m + ":"+s+" "+session;
+
+//show tick mark on the clock
+if(m==0 && s==0){
+    document.getElementById("digitalclock").style.transform = "rotate(-6deg)";
+    setTimeout("document.getElementById('digitalclock').style.transform='rotate(0)'",500);
+}
+
+//update the time every 1 second
+setTimeout("showtime()",1000);
+}
+
+window.onload = showtime;
+
+
+    </script>
+
+    <style> .Clockcss {
+    color:rgb(20, 188, 34);
+    text-align: right;
+    font-size: 29px;
+   
+    border-bottom: 10px;
+    border-top: 10px;
+    border-width: 206px;
+    border-right: 55px;
+    border-left: 5px;
+    animation: infinite;
+    animation-duration: 10ms;
+
+
+    
+    font-family: Arial, sans-serif;
+    font-size: 3rem;
+    color: #fff;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    body {
+        background-color: black;
+        color: white;
+    }
+ </style>
+</body>
+</html>
